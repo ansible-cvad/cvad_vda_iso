@@ -1,0 +1,16 @@
+---
+  cvad_vda_product_ids:
+    1912 LTSR CU2: '{89BD0C39-1C8E-44D2-9923-1167EAB7BEEB}'
+
+  smb_location: \\file1\automation
+
+  cvad_vda_version: 1912 LTSR CU2
+  cvad_vda_iso_location: "{{ smb_location }}\\Citrix\\Citrix Virtual Apps and Desktops\\{{ cvad_vda_version }}"
+  cvad_vda_iso_file: Citrix_Virtual_Apps_and_Desktops_7_1912_2000.iso
+  cvad_vda_install_file_location: x64\XenDesktop Setup
+  cvad_vda_install_file: XenDesktopVDASetup.exe
+  # https://docs.citrix.com/en-us/citrix-virtual-apps-desktops-service/install-configure/install-command.html
+  # For MCS instead of PVS: Remove PVS related switches and add /install_mcsio_driver /mastermcsimage
+  cvad_vda_install_arguments: /components vda,plugins /enable_hdx_ports /enable_hdx_udp_ports /disableexperiencemetrics /enable_real_time_transport /enable_remote_assistance /masterpvsimage /virtualmachine /noreboot /quiet
+  cvad_vda_product_id: "{{ cvad_vda_product_ids[cvad_vda_version] }}"
+  cvad_vda_install_state: present
