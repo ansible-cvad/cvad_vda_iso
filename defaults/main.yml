@@ -10,7 +10,14 @@
   cvad_vda_install_file_location: x64\XenDesktop Setup
   cvad_vda_install_file: XenDesktopVDASetup.exe
   # https://docs.citrix.com/en-us/citrix-virtual-apps-desktops-service/install-configure/install-command.html
-  # For MCS instead of PVS: Remove PVS related switches and add /install_mcsio_driver /mastermcsimage
-  cvad_vda_install_arguments: /components vda,plugins /enable_hdx_ports /enable_hdx_udp_ports /disableexperiencemetrics /enable_real_time_transport /enable_remote_assistance /masterpvsimage /virtualmachine /noreboot /quiet
+
+  # For MCS instead of PVS: Remark PVS related entry and unremark /install_mcsio_driver /mastermcsimage
+  # cvad_vda_install_provisioning: /install_mcsio_driver /mastermcsimage
+
+  # For PVS
+  cvad_vda_install_provisioning: /virtualmachine
+
+  cvad_vda_install_components: vda,plugins
+  cvad_vda_install_arguments: "/components {{ cvad_vda_install_components }} /enable_hdx_ports /enable_hdx_udp_ports /disableexperiencemetrics /enable_real_time_transport /enable_remote_assistance {{ cvad_vda_install_provisioning }}  /noreboot /quiet"
   cvad_vda_product_id: "{{ cvad_vda_product_ids[cvad_vda_version] }}"
   cvad_vda_install_state: present
