@@ -17,7 +17,7 @@
       # Citrix throws a result code 3 on a successful install for some reason.  3010 = reboot required
       expected_return_code: [0, 3, 3010]
     # register: cvad_vda_iso
-    notify: Reboot After CVAD VDA Installion
+    notify: Reboot After CVAD VDA Installation
 
   - name: Dismount Citrix Virtual Applications and Desktops ISO
     win_shell: Dismount-DiskImage -ImagePath '{{ cvad_vda_iso_location }}\{{ cvad_vda_iso_file }}'
