@@ -21,4 +21,4 @@ galaxy_info:
     - vda
 
 dependencies:
-  - role: ansible-cvad.win_feature_rds_server
+  - role: ansible_cvad.win_feature_rds_server
